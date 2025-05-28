@@ -18,7 +18,7 @@ public class RegionCodesFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentRegionCodesBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        //binding.pdfviewregioncodes.fromAsset("Автомобильные коды регионов.pdf").load();
+        binding.pdfviewregioncodes.fromAsset("Автомобильные коды регионов.pdf").load();
         return view;
     }
 

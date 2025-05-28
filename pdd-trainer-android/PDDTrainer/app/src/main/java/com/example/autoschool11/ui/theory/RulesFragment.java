@@ -45,9 +45,6 @@ public class RulesFragment extends Fragment implements TheoryAdapter.HomeClickLi
         return view;
     }
 
-
-
-
     @Override
     public void onHomeClick(int position) { // обработка нажатия на элемент в списке
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);

@@ -20,7 +20,7 @@ public class FinesFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentFinesBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        //binding.pdfviewfines.fromAsset("PDD/Штрафы.pdf").load();
+        binding.pdfviewfines.fromAsset("PDD/Штрафы.pdf").load();
         return view;
     }
 

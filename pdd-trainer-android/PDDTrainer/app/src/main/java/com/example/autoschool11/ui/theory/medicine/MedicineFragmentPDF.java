@@ -30,7 +30,7 @@ public class MedicineFragmentPDF extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentMedicinePdfBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        //binding.pdfviewmed1.fromAsset(pdfFile).load();
+        binding.pdfviewmed1.fromAsset(pdfFile).load();
         return view;
     }
 

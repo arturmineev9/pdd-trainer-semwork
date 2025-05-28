@@ -29,7 +29,7 @@ public class ExamInfoFragmentPDF extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentExamInfoPdfBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        //binding.pdfviewexaminfo1.fromAsset(pdfFile).load();
+        binding.pdfviewexaminfo1.fromAsset(pdfFile).load();
         return view;
     }
 

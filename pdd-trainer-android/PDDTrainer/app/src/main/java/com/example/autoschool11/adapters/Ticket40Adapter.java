@@ -28,8 +28,6 @@ public class Ticket40Adapter extends RecyclerView.Adapter<Ticket40Adapter.ViewHo
         return new ViewHolder(view, mticketbuttonClickListener);
     }
 
-
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.btnticket.setText(tickets[position]);

@@ -26,7 +26,7 @@ public class TalkingFragmentPDF extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentTalkingPdfBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        //binding.pdftalking1.fromAsset(pdfFile).load();
+        binding.pdftalking1.fromAsset(pdfFile).load();
         return view;
     }
 
