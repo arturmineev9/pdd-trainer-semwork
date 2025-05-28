@@ -2,18 +2,15 @@ package com.example.autoschool11.ui.theory.DPSTalking;
 
 import android.content.Context;
 import android.os.Bundle;
-
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.autoschool11.adapters.ButtonAdapter;
 import com.example.autoschool11.R;
+import com.example.autoschool11.adapters.ButtonAdapter;
 import com.example.autoschool11.databinding.FragmentTalkingBinding;
 
 

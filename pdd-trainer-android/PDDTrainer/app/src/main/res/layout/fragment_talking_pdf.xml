@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.theory.DPSTalking.TalkingFragmentPDF">
 
+    <!--
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdftalking1"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
+-->
 </FrameLayout>

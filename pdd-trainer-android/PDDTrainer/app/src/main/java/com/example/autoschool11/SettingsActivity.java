@@ -1,12 +1,8 @@
 package com.example.autoschool11;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
@@ -16,9 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
-
 
 import com.example.autoschool11.databinding.FragmentSettingsBinding;
 import com.example.autoschool11.db.DataBaseHelper;
@@ -26,8 +20,6 @@ import com.example.autoschool11.login_registration.LoginActivity;
 import com.example.autoschool11.login_registration.RegistrationActivity;
 import com.example.autoschool11.theme_changer.ThemeColor;
 import com.example.autoschool11.theme_changer.Methods;
-import com.turkialkhateeb.materialcolorpicker.ColorChooserDialog;
-import com.turkialkhateeb.materialcolorpicker.ColorListener;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
     SharedPreferences sharedPreferences, app_preferences;
@@ -65,7 +57,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         editor = sharedPreferences.edit();
 
         colorize();
-
+        /*
         binding.buttonColor.setOnClickListener(v -> {
             ColorChooserDialog dialog = new ColorChooserDialog(SettingsActivity.this);
             dialog.setTitle("Select");
@@ -91,7 +83,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
             dialog.show();
         });
-
+*/
         binding.statRestartCard.setOnClickListener(this);
         binding.loginButtonCard.setOnClickListener(view1 -> {
             Intent i = new Intent(SettingsActivity.this, LoginActivity.class);

@@ -29,7 +29,7 @@ public class RulesFragmentPDF extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentRules1Binding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        binding.pdfview1.fromAsset(pdfFile).load();
+        //binding.pdfview1.fromAsset(pdfFile).load();
 
         return view;
     }

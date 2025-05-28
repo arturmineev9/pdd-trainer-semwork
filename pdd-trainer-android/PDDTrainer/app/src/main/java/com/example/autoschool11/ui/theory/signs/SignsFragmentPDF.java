@@ -28,7 +28,7 @@ public class SignsFragmentPDF extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentSignsPdfBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        binding.pdfviewvertical.fromAsset(pdfFile).load();
+        //binding.pdfviewvertical.fromAsset(pdfFile).load();
         return view;
     }
 

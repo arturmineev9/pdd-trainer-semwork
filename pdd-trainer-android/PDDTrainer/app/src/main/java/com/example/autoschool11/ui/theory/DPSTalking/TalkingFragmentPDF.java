@@ -1,9 +1,7 @@
 package com.example.autoschool11.ui.theory.DPSTalking;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +26,7 @@ public class TalkingFragmentPDF extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentTalkingPdfBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        binding.pdftalking1.fromAsset(pdfFile).load();
+        //binding.pdftalking1.fromAsset(pdfFile).load();
         return view;
     }
 
