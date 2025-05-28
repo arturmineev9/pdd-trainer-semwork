@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using PddTrainer.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(optionsBuilder =>
 {
     optionsBuilder.UseSnakeCaseNamingConvention();
-    optionsBuilder.UseNpgsql(builder.Configuration["App:ConnectionString"]);
+    optionsBuilder.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 // Auth
