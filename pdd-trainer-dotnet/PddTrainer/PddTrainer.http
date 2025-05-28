@@ -1,0 +1,6 @@
+@PddTrainer_HostAddress = http://localhost:5268
+
+GET {{PddTrainer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
