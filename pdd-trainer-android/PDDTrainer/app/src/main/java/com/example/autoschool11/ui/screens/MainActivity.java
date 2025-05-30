@@ -24,6 +24,10 @@ import com.example.autoschool11.ui.screens.settings.SettingsActivity;
 import com.example.autoschool11.ui.theme_changer.ThemeColor;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;

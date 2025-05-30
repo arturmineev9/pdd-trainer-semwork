@@ -10,7 +10,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.autoschool11.R;
-import com.example.autoschool11.data.local.db_classes.DbButtonClass;
+import com.example.autoschool11.core.data.local.db_classes.DbButtonClass;
 
 import java.util.ArrayList;
 

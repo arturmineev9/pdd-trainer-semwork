@@ -40,35 +40,30 @@ app.UseAuthorization();
 
 app.MapGet("/", () => "PDD Server is running");
 
-app.MapPost("/api/recognize-sign", async (HttpRequest request, IHttpClientFactory httpClientFactory) =>
+app.MapPost("/api/v1/sign-recognition", async (HttpRequest request, IHttpClientFactory httpClientFactory) =>
 {
-    var file = request.Form.Files.GetFile("file");
+    var form = await request.ReadFormAsync();
+    var file = form.Files.GetFile("file");
 
     if (file == null || file.Length == 0)
-        return Results.BadRequest("No file uploaded");
+        return Results.BadRequest("Файл не загружен.");
 
     using var memoryStream = new MemoryStream();
     await file.CopyToAsync(memoryStream);
-    memoryStream.Seek(0, SeekOrigin.Begin);
+    memoryStream.Position = 0;
 
-    var client = httpClientFactory.CreateClient();
+    var httpClient = httpClientFactory.CreateClient();
 
-    using var form = new MultipartFormDataContent();
-    var fileContent = new StreamContent(memoryStream);
-    fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
-    form.Add(fileContent, "file", file.FileName);
+    var flaskRequest = new MultipartFormDataContent();
+    flaskRequest.Add(new StreamContent(memoryStream), "file", file.FileName);
 
-    var response = await client.PostAsync("http://localhost:5000/predict", form);
-    if (!response.IsSuccessStatusCode)
-        return Results.StatusCode((int)response.StatusCode);
+    var flaskResponse = await httpClient.PostAsync("http://127.0.0.1:5000/predict", flaskRequest);
+    if (!flaskResponse.IsSuccessStatusCode)
+        return Results.StatusCode((int)flaskResponse.StatusCode);
 
-    var responseContent = await response.Content.ReadFromJsonAsync<TrafficSignPredictionResult>();
-    return Results.Ok(responseContent);
-})
-.Accepts<IFormFile>("multipart/form-data")
-.Produces<TrafficSignPredictionResult>(StatusCodes.Status200OK)
-.WithName("RecognizeSign")
-.WithOpenApi();
+    var resultJson = await flaskResponse.Content.ReadAsStringAsync();
+    return Results.Content(resultJson, "application/json");
+});
 
 
 app.Run();

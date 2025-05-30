@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     android:label="Сложные вопросы"
-    app:startDestination="@id/navigation_rules">
+    app:startDestination="@id/signRecognitionFragment">
 
     <fragment
         android:id="@+id/navigation_main"
@@ -265,4 +265,8 @@
         android:name="com.example.autoschool11.ui.screens.settings.SettingsActivity"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/signRecognitionFragment"
+        android:name="com.example.autoschool11.ui.screens.road_signs_recognition.SignRecognitionFragment"
+        android:label="SignRecognitionFragment" />
 </navigation>

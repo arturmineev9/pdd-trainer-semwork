@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.example.autoschool11.ui.screens.MainActivity;
 import com.example.autoschool11.R;
 import com.example.autoschool11.databinding.FragmentSettingsBinding;
-import com.example.autoschool11.data.local.DataBaseHelper;
+import com.example.autoschool11.core.data.local.DataBaseHelper;
 import com.example.autoschool11.ui.screens.login_registration.LoginActivity;
 import com.example.autoschool11.ui.screens.login_registration.RegistrationActivity;
 import com.example.autoschool11.ui.theme_changer.Methods;

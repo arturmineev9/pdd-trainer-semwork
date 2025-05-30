@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.autoschool11.R;
 import com.example.autoschool11.databinding.FragmentTicketEndBinding;
-import com.example.autoschool11.data.local.DataBaseHelper;
+import com.example.autoschool11.core.data.local.DataBaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.DateFormat;

@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.autoschool11.R;
 import com.example.autoschool11.databinding.FragmentTicketsThemesBinding;
-import com.example.autoschool11.data.local.DataBaseHelper;
+import com.example.autoschool11.core.data.local.DataBaseHelper;
 import com.example.autoschool11.ui.adapters.AnswersAdapter;
 import com.example.autoschool11.ui.adapters.ThemeTicketsAdapter;
 import com.example.autoschool11.ui.screens.tickets.TicketThemes;

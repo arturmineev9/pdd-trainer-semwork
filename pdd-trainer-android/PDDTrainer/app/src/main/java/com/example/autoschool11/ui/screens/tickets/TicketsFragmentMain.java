@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.autoschool11.R;
 import com.example.autoschool11.databinding.FragmentTicketsBinding;
-import com.example.autoschool11.data.local.DataBaseHelper;
+import com.example.autoschool11.core.data.local.DataBaseHelper;
 import com.example.autoschool11.ui.adapters.TicketModesAdapter;
 import com.example.autoschool11.ui.screens.tickets.modes.FinesTestFragment;
 import com.example.autoschool11.ui.screens.tickets.modes.HardQuestionFragment;
