@@ -11,17 +11,17 @@
         android:theme="@style/Theme_Light"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".login_registration.RegistrationActivity"
+            android:name=".ui.screens.login_registration.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".login_registration.LoginActivity"
+            android:name=".ui.screens.login_registration.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".ui.screens.settings.SettingsActivity"
             android:exported="false"
             android:label="Настройки" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.screens.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
