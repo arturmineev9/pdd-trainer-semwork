@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     android:label="Сложные вопросы"
-    app:startDestination="@id/signRecognitionFragment">
+    app:startDestination="@id/navigation_rules">
 
     <fragment
         android:id="@+id/navigation_main"
         android:name="com.example.autoschool11.ui.screens.statistics.StatisticsFragment"
         android:label="@string/title_main"
-        tools:layout="@layout/fragment_stat"/>
+        tools:layout="@layout/fragment_stat" />
 
     <fragment
         android:id="@+id/navigation_tickets"
@@ -28,11 +28,11 @@
             app:destination="@id/mistakesFragment" />
         <action
             android:id="@+id/action_navigation_tickets_to_hardQuestionFragment"
+            app:destination="@id/hardQuestionFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:destination="@id/hardQuestionFragment" />
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_navigation_tickets_to_trainingFragment"
             app:destination="@id/trainingFragment" />
@@ -63,11 +63,11 @@
             app:destination="@id/rulesFragmentPDD2" />
         <action
             android:id="@+id/action_navigation_rules_to_regionCodesFragment"
+            app:destination="@id/regionCodesFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:destination="@id/regionCodesFragment" />
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_navigation_rules_to_medicineFragment"
             app:destination="@id/medicineFragment" />
@@ -87,7 +87,7 @@
     <fragment
         android:id="@+id/rulesFragment1"
         android:name="com.example.autoschool11.ui.screens.theory.pdd.RulesFragmentPDF"
-        tools:layout="@layout/fragment_rules1"/>
+        tools:layout="@layout/fragment_rules1" />
     <fragment
         android:id="@+id/finesFragment"
         android:name="com.example.autoschool11.ui.screens.theory.fines.FinesFragment"
@@ -199,7 +199,7 @@
         android:id="@+id/trainingFragment"
         android:name="com.example.autoschool11.ui.screens.tickets.modes.TrainingFragment"
         android:label="Умная тренировка"
-        tools:layout="@layout/fragment_training" >
+        tools:layout="@layout/fragment_training">
         <action
             android:id="@+id/action_trainingFragment_to_trainingFragmentSolution"
             app:destination="@id/trainingFragmentSolution" />
@@ -265,8 +265,9 @@
         android:name="com.example.autoschool11.ui.screens.settings.SettingsActivity"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+
     <fragment
-        android:id="@+id/signRecognitionFragment"
+        android:id="@+id/navigation_sign_recognition"
         android:name="com.example.autoschool11.ui.screens.road_signs_recognition.SignRecognitionFragment"
-        android:label="SignRecognitionFragment" />
+        android:label="Распознавание знаков" />
 </navigation>

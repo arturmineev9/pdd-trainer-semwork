@@ -36,6 +36,7 @@
     <string name="forgotpassword">ЗАБЫЛИ ПАРОЛЬ?</string>
     <string name="name">Вашe имя</string>
     <string name="registration">Зарегистрироваться</string>
+    <string name="title_sign_recognition">Распознавание</string>
 
     <string-array name="rules_names">
         <item>1. Общие положения</item>

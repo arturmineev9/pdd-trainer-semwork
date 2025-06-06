@@ -6,7 +6,6 @@
         android:icon="@drawable/ic_baseline_query_stats_24"
         android:title="@string/title_main" />
 
-
     <item
         android:id="@+id/navigation_rules"
         android:icon="@drawable/ic_baseline_menu_book_24"
@@ -16,5 +15,10 @@
         android:id="@+id/navigation_tickets"
         android:icon="@drawable/ic_baseline_content_paste_search_24"
         android:title="@string/title_tickets"/>
+
+    <item
+        android:id="@+id/navigation_sign_recognition"
+        android:icon="@drawable/ic_stop"
+        android:title="@string/title_sign_recognition"/>
 
 </menu>
