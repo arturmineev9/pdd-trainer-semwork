@@ -2,6 +2,7 @@ package com.example.autoschool11.ui.screens.road_signs_recognition
 
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.autoschool11.core.data.SignRecognitionRepository
@@ -57,6 +58,7 @@ class SignRecognitionViewModel @Inject constructor(
                     onSuccess = { response ->
 
                         val signModel = repository.getSignInfo(response.classId)
+                        Log.d("classId", "${response.classId}")
                         _recognizedSign.value = signModel
                     },
                     onFailure = { throwable ->

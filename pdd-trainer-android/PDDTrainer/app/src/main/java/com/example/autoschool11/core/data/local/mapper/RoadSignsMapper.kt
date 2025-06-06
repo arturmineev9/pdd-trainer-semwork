@@ -6,7 +6,7 @@ import com.example.autoschool11.core.domain.models.RoadSignModel
 
 fun RoadSignRecognitionEntity.toRoadSignModel(context: Context): RoadSignModel {
     val resId = context.resources.getIdentifier(
-        "sign_${this.code}",
+        "sign_recognition_${this.code}",
         "drawable",
         context.packageName
     )
