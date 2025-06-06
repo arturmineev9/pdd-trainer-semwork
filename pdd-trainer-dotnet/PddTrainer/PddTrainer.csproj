@@ -26,4 +26,10 @@
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="8.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Application\" />
+      <Folder Include="Domain\" />
+      <Folder Include="Infrastructure\" />
+    </ItemGroup>
+
 </Project>
