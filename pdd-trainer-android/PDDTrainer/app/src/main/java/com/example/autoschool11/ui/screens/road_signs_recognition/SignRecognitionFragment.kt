@@ -61,6 +61,7 @@ class SignRecognitionFragment : Fragment() {
         viewModel.recognizedSign.observe(viewLifecycleOwner) { signModel ->
             signModel?.let {
                 showSignInfoBottomSheet(it)
+                viewModel.clearRecognizedSign()
             }
         }
     }

@@ -38,6 +38,11 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<ISignRecognitionService, SignRecognitionService>();
 builder.Services.AddControllers();
 
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(5268); 
+});
+
 var app = builder.Build();
 
 app.UseSwagger();

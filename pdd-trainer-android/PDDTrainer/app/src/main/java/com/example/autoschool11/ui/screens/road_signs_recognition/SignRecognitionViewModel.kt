@@ -58,7 +58,6 @@ class SignRecognitionViewModel @Inject constructor(
                     onSuccess = { response ->
 
                         val signModel = repository.getSignInfo(response.classId)
-                        Log.d("classId", "${response.classId}")
                         _recognizedSign.value = signModel
                     },
                     onFailure = { throwable ->
@@ -73,4 +72,8 @@ class SignRecognitionViewModel @Inject constructor(
             }
         }
     }
+    fun clearRecognizedSign() {
+        _recognizedSign.value = null
+    }
+
 }
