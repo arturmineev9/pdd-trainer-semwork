@@ -1,21 +1,23 @@
 package com.example.autoschool11.ui.screens.road_signs_recognition
 
-import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.autoschool11.R
 import com.example.autoschool11.core.domain.models.RoadSignModel
 import com.example.autoschool11.core.utils.observe
 import com.example.autoschool11.databinding.FragmentRoadSignsRecognitionBinding
-import com.example.autoschool11.databinding.RoadSignRecognitionResultDialogBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SignRecognitionFragment : Fragment() {
@@ -58,7 +60,7 @@ class SignRecognitionFragment : Fragment() {
 
         viewModel.recognizedSign.observe(viewLifecycleOwner) { signModel ->
             signModel?.let {
-                showSignInfoDialog(it)
+                showSignInfoBottomSheet(it)
             }
         }
     }
@@ -68,36 +70,23 @@ class SignRecognitionFragment : Fragment() {
     }
 
     private fun initializeGalleryLauncher() {
-        pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        pickImageLauncher = registerForActivityResult(
+            ActivityResultContracts.GetContent()
+        ) { uri ->
             if (uri != null) {
                 viewModel.onImageSelected(uri)
                 binding.pickedSignImage.setImageURI(uri)
             } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Изображение не выбрано", Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(requireContext(), "Изображение не выбрано", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun showSignInfoDialog(sign: RoadSignModel) {
-        val dialogBinding = RoadSignRecognitionResultDialogBinding.inflate(layoutInflater)
-
-        sign.imageResId?.let { resId ->
-            dialogBinding.imageViewSign.setImageResource(resId)
-        }
-
-        dialogBinding.textViewName.text = sign.name
-        dialogBinding.textViewDescription.text = sign.description
-
-        val dialog = AlertDialog.Builder(requireContext())
-            .setView(dialogBinding.root)
-            .setPositiveButton("OK", null)
-            .create()
-
-        dialog.show()
+    private fun showSignInfoBottomSheet(sign: RoadSignModel) {
+        val bottomSheet = SignInfoBottomSheet.newInstance(sign)
+        bottomSheet.show(childFragmentManager, SignInfoBottomSheet.TAG)
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

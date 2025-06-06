@@ -28,6 +28,14 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalBottomSheetStyle</item>
+    </style>
+
+    <style name="AppModalBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/white</item>
+        <item name="elevation">8dp</item>
+    </style>
 
 
 </resources>
