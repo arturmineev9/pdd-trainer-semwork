@@ -28,7 +28,7 @@ import com.example.autoschool11.R;
 import com.example.autoschool11.databinding.FragmentTicketBinding;
 import com.example.autoschool11.core.data.local.PDD_DataBaseHelper;
 import com.example.autoschool11.core.data.local.DataBaseHelper;
-import com.example.autoschool11.core.data.local.db_classes.DbButtonClass;
+import com.example.autoschool11.core.data.local.entities.DbButtonClass;
 import com.example.autoschool11.ui.adapters.AnswersAdapter;
 import com.example.autoschool11.ui.screens.tickets.Ticket;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

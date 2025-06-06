@@ -14,7 +14,7 @@ import com.example.autoschool11.ui.animation.ProgressBarAnimation;
 import com.example.autoschool11.ui.screens.MainActivity;
 import com.example.autoschool11.databinding.FragmentStatisticsBinding;
 import com.example.autoschool11.core.data.local.DataBaseHelper;
-import com.example.autoschool11.core.data.local.db_classes.IntensityClass;
+import com.example.autoschool11.core.data.local.entities.IntensityClass;
 import com.example.autoschool11.ui.theme_changer.ThemeColor;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;

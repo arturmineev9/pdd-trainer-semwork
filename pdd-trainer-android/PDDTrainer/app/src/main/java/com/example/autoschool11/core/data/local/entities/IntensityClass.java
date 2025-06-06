@@ -1,4 +1,4 @@
-package com.example.autoschool11.core.data.local.db_classes;
+package com.example.autoschool11.core.data.local.entities;
 
 // класс для создания графика интенсивности
 public class IntensityClass {

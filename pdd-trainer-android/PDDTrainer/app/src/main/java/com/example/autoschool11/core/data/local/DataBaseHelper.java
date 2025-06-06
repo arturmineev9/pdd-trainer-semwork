@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.autoschool11.core.data.local.db_classes.DbButtonClass;
-import com.example.autoschool11.core.data.local.db_classes.IntensityClass;
+import com.example.autoschool11.core.data.local.entities.DbButtonClass;
+import com.example.autoschool11.core.data.local.entities.IntensityClass;
 import com.github.mikephil.charting.data.PieEntry;
 
 import java.util.ArrayList;
