@@ -5,6 +5,11 @@ using System.Text;
 using PddTrainer.Application.Interfaces;
 using PddTrainer.Domain.Services;
 using PddTrainer.Infrastructure.Services;
+using Microsoft.AspNetCore.Identity;
+using PddTrainer.Models;
+using PddTrainer.Infrastructure.Data;
+using PddTrainer.DTOs;
+using PddTrainer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +21,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 // Auth
-var key = Encoding.ASCII.GetBytes("SuperSecretKeyThatYouShouldChange");
+var jwtSection = builder.Configuration.GetSection("JwtSettings");
+var key = Encoding.ASCII.GetBytes(jwtSection["Key"]!);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -24,8 +30,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         {
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(key),
-            ValidateIssuer = false,
-            ValidateAudience = false
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidIssuer = jwtSection["Issuer"],
+            ValidAudience = jwtSection["Audience"]
         };
     });
 
@@ -36,6 +44,9 @@ builder.Services.AddHttpClient();
 
 // DI
 builder.Services.AddScoped<ISignRecognitionService, SignRecognitionService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<JwtTokenService>();
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddControllers();
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
