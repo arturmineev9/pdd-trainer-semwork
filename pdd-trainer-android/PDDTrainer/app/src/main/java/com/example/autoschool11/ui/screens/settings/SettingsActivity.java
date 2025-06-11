@@ -16,6 +16,7 @@ import com.example.autoschool11.ui.screens.MainActivity;
 import com.example.autoschool11.R;
 import com.example.autoschool11.databinding.FragmentSettingsBinding;
 import com.example.autoschool11.core.data.local.DataBaseHelper;
+import com.example.autoschool11.ui.screens.login_registration.AuthTokenStorage;
 import com.example.autoschool11.ui.screens.login_registration.LoginActivity;
 import com.example.autoschool11.ui.screens.login_registration.RegistrationActivity;
 import com.example.autoschool11.ui.theme_changer.Methods;
@@ -52,13 +53,22 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         setContentView(view);
 
+        String token = AuthTokenStorage.INSTANCE.getToken(this);
+
+        if (token != null && !token.isEmpty()) {
+            binding.grid.setVisibility(View.VISIBLE);
+            binding.gridogin.setVisibility(View.INVISIBLE);
+        } else {
+            binding.grid.setVisibility(View.INVISIBLE);
+            binding.gridogin.setVisibility(View.VISIBLE);
+        }
+
         methods = new Methods();
 
         editor = app_preferences.edit();
 
         colorize();
 
-        // Новая логика выбора цвета
         binding.buttonColor.setOnClickListener(v -> {
             new MaterialColorPickerDialog
                     .Builder(this)

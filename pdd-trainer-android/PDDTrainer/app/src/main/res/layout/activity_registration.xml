@@ -5,12 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.screens.login_registration.RegistrationActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -71,10 +69,10 @@
 
 
             <EditText
-                android:id="@+id/username_input"
+                android:id="@+id/email_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/username_icon"
+                android:layout_toRightOf="@+id/email_icon"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/poppins_regular"
                 android:hint="@string/mail"
@@ -87,7 +85,7 @@
                 android:textSize="12sp" />
 
             <ImageView
-                android:id="@+id/username_icon"
+                android:id="@+id/email_icon"
                 android:layout_width="14.7dp"
                 android:layout_height="10.3dp"
                 android:layout_centerVertical="true"
@@ -148,7 +146,6 @@
             android:text="@string/registration"
             android:textColor="#ffffff"
             android:textSize="12sp" />
-
 
 
     </LinearLayout>

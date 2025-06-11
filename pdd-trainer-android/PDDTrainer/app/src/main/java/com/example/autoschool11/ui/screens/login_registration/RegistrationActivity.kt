@@ -24,7 +24,7 @@ class RegistrationActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.buttonRegistration.setOnClickListener {
-            val firstName = binding.usernameInput.text.toString()
+            val firstName = binding.nameInput.text.toString()
             val email = binding.emailInput.text.toString()
             val password = binding.pass.text.toString()
             if (firstName.isNotBlank() && email.isNotBlank() && password.isNotBlank()) {

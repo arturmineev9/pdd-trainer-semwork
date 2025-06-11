@@ -4,9 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.autoschool11.core.domain.usecases.LoginUseCase
 import com.example.autoschool11.core.domain.usecases.RegisterUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 sealed class AuthState {
     object Idle : AuthState()
@@ -14,8 +16,8 @@ sealed class AuthState {
     data class Success(val token: String) : AuthState()
     data class Error(val message: String) : AuthState()
 }
-
-class AuthViewModel(
+@HiltViewModel
+class AuthViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
     private val registerUseCase: RegisterUseCase
 ) : ViewModel() {
