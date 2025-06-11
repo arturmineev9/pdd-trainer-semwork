@@ -1,8 +1,8 @@
-package com.example.autoschool11.core.data
+package com.example.autoschool11.core.data.repositories
 
-import com.example.autoschool11.core.data.remote.AuthApi
-import com.example.autoschool11.core.data.remote.dto.RegisterRequestDto
+import com.example.autoschool11.core.data.remote.api.AuthApi
 import com.example.autoschool11.core.data.remote.dto.LoginRequestDto
+import com.example.autoschool11.core.data.remote.dto.RegisterRequestDto
 import com.example.autoschool11.core.domain.repositories.AuthRepository
 
 class AuthRepositoryImpl(private val api: AuthApi) : AuthRepository {
@@ -15,4 +15,4 @@ class AuthRepositoryImpl(private val api: AuthApi) : AuthRepository {
         val response = api.login(LoginRequestDto(email, password))
         return response.token
     }
-} 
+}

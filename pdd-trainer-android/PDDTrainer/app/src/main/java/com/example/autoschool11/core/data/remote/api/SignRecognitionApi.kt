@@ -1,4 +1,4 @@
-package com.example.autoschool11.core.data.remote
+package com.example.autoschool11.core.data.remote.api
 
 import com.example.autoschool11.core.data.remote.dto.SignRecognitionResponse
 import okhttp3.MultipartBody

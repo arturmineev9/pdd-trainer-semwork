@@ -1,8 +1,9 @@
-package com.example.autoschool11.core.data
+package com.example.autoschool11.core.data.repositories
 
+import android.content.Context
 import com.example.autoschool11.core.data.local.dao.RoadSignRecognitionDao
 import com.example.autoschool11.core.data.local.mapper.toRoadSignModel
-import com.example.autoschool11.core.data.remote.SignRecognitionApi
+import com.example.autoschool11.core.data.remote.api.SignRecognitionApi
 import com.example.autoschool11.core.data.remote.dto.SignRecognitionResponse
 import com.example.autoschool11.core.domain.models.RoadSignModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -11,7 +12,6 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 import javax.inject.Inject
-import android.content.Context
 
 class SignRecognitionRepository @Inject constructor(
     @ApplicationContext private val context: Context,

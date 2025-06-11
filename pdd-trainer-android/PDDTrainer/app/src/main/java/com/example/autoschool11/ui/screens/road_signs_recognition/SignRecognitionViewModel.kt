@@ -5,7 +5,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.autoschool11.core.data.SignRecognitionRepository
+import com.example.autoschool11.core.data.repositories.SignRecognitionRepository
 import com.example.autoschool11.core.domain.models.RoadSignModel
 import com.example.autoschool11.core.utils.toFile
 import dagger.hilt.android.lifecycle.HiltViewModel

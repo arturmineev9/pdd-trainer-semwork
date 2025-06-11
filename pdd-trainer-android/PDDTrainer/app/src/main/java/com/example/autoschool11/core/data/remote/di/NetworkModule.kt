@@ -1,7 +1,8 @@
 package com.example.autoschool11.core.data.remote.di
 
+import android.content.Context
 import android.net.Uri
-import com.example.autoschool11.core.data.remote.SignRecognitionApi
+import com.example.autoschool11.core.data.remote.api.SignRecognitionApi
 import com.example.autoschool11.core.data.remote.adapters.UriTypeAdapter
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -15,9 +16,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-import com.example.autoschool11.core.data.remote.AuthApi
-import com.example.autoschool11.core.data.AuthRepositoryImpl
+import com.example.autoschool11.core.data.remote.api.AuthApi
+import com.example.autoschool11.core.data.repositories.AuthRepositoryImpl
 import com.example.autoschool11.core.domain.repositories.AuthRepository
+import com.example.autoschool11.core.data.remote.api.UserStatsApi
+import com.example.autoschool11.ui.screens.login_registration.AuthTokenStorage
+import dagger.hilt.android.qualifiers.ApplicationContext
+import okhttp3.Interceptor
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -27,9 +32,21 @@ object NetworkModule {
     fun provideBaseUrl(): String = "http://10.0.2.2:5268/"
 
     @Provides
+    @Singleton
     fun provideOkHttpClient(
+        @ApplicationContext context: Context
     ): OkHttpClient {
+        val authInterceptor = Interceptor { chain ->
+            val token = AuthTokenStorage.getToken(context)
+            val request = chain.request().newBuilder()
+            if (token != null) {
+                request.addHeader("Authorization", "Bearer $token")
+            }
+            chain.proceed(request.build())
+        }
+
         return OkHttpClient.Builder()
+            .addInterceptor(authInterceptor)
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             })
@@ -69,5 +86,10 @@ object NetworkModule {
     @Singleton
     fun provideAuthRepository(api: AuthApi): AuthRepository =
         AuthRepositoryImpl(api)
+
+    @Provides
+    @Singleton
+    fun provideUserStatsApi(retrofit: Retrofit): UserStatsApi =
+        retrofit.create(UserStatsApi::class.java)
 
 }
