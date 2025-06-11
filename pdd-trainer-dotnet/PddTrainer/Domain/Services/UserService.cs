@@ -1,12 +1,14 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using PddTrainer.DTOs;
-using PddTrainer.Models;
-using PddTrainer.Services;
-using System.Security.Claims;
+using PddTrainer.Domain.Abstractions;
+using PddTrainer.Domain.DTOs;
 using PddTrainer.Domain.Models;
+using PddTrainer.DTOs;
+using PddTrainer.Infrastructure.Services;
+using PddTrainer.Models;
 
-namespace PddTrainer.Infrastructure.Services;
+namespace PddTrainer.Domain.Services;
 
 public class UserService : IUserService
 {

@@ -1,6 +1,8 @@
-namespace PddTrainer.Services;
-using PddTrainer.DTOs;
 using System.Security.Claims;
+using PddTrainer.Domain.DTOs;
+using PddTrainer.DTOs;
+
+namespace PddTrainer.Domain.Abstractions;
 
 public interface IUserService
 {

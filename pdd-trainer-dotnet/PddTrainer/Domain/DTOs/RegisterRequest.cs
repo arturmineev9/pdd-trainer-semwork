@@ -1,4 +1,4 @@
-namespace PddTrainer.DTOs;
+namespace PddTrainer.Domain.DTOs;
 
 public class RegisterRequest
 {

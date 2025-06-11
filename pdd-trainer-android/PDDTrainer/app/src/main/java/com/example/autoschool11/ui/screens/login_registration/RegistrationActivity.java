@@ -57,6 +57,5 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
     }
 }

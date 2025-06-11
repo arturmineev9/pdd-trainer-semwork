@@ -15,6 +15,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
+import com.example.autoschool11.core.data.remote.AuthApi
+import com.example.autoschool11.core.data.AuthRepositoryImpl
+import com.example.autoschool11.core.domain.repositories.AuthRepository
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -56,5 +59,15 @@ object NetworkModule {
             .registerTypeAdapter(Uri::class.java, UriTypeAdapter())
             .create()
     }
+
+    @Provides
+    @Singleton
+    fun provideAuthApi(retrofit: Retrofit): AuthApi =
+        retrofit.create(AuthApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideAuthRepository(api: AuthApi): AuthRepository =
+        AuthRepositoryImpl(api)
 
 }
