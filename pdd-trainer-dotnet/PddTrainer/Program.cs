@@ -7,8 +7,6 @@ using PddTrainer.Domain.Services;
 using PddTrainer.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using PddTrainer.Models;
-using PddTrainer.Infrastructure.Data;
-using PddTrainer.DTOs;
 using PddTrainer.Services;
 
 var builder = WebApplication.CreateBuilder(args);

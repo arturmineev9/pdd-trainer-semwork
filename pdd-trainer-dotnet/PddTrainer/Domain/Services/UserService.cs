@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using PddTrainer.DTOs;
 using PddTrainer.Models;
 using PddTrainer.Services;
+using System.Security.Claims;
+using PddTrainer.Domain.Models;
 
 namespace PddTrainer.Infrastructure.Services;
 
@@ -48,5 +50,49 @@ public class UserService : IUserService
             throw new Exception("Неверный пароль");
 
         return _jwtTokenService.GenerateToken(user);
+    }
+
+    public async Task<List<UserStatsDto>> GetUserStatsAsync(ClaimsPrincipal userPrincipal)
+    {
+        var userId = int.Parse(userPrincipal.FindFirst(ClaimTypes.NameIdentifier)?.Value ??
+                               userPrincipal.FindFirst(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Sub)!.Value);
+        var stats = await _dbContext.UserStats
+            .Where(s => s.UserId == userId)
+            .Select(s => new UserStatsDto
+            {
+                VariantNumber = s.VariantNumber,
+                CorrectAnswers = s.CorrectAnswers,
+                UpdatedAt = s.UpdatedAt
+            })
+            .ToListAsync();
+        return stats;
+    }
+
+    public async Task SaveUserStatsAsync(ClaimsPrincipal userPrincipal, UpdateUserStatsRequest request)
+    {
+        var userId = int.Parse(userPrincipal.FindFirst(ClaimTypes.NameIdentifier)?.Value ??
+                               userPrincipal.FindFirst(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Sub)!.Value);
+        var existingStats = await _dbContext.UserStats.Where(s => s.UserId == userId).ToListAsync();
+        foreach (var stat in request.Stats)
+        {
+            var stats = existingStats.FirstOrDefault(s => s.VariantNumber == stat.VariantNumber);
+            if (stats == null)
+            {
+                stats = new UserStats
+                {
+                    UserId = userId,
+                    VariantNumber = stat.VariantNumber,
+                    CorrectAnswers = stat.CorrectAnswers,
+                    UpdatedAt = DateTime.UtcNow
+                };
+                _dbContext.UserStats.Add(stats);
+            }
+            else
+            {
+                stats.CorrectAnswers = stat.CorrectAnswers;
+                stats.UpdatedAt = DateTime.UtcNow;
+            }
+        }
+        await _dbContext.SaveChangesAsync();
     }
 }
