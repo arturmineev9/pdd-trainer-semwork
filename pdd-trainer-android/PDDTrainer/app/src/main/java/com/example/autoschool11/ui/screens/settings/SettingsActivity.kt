@@ -61,14 +61,13 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun updateUiBasedOnAuth() {
         val token = AuthTokenStorage.getToken(this)
-        if (token != null && token.isNotEmpty()) {
-            binding.grid.visibility = View.VISIBLE
-            binding.gridogin.visibility = View.INVISIBLE
-        } else {
-            binding.grid.visibility = View.INVISIBLE
-            binding.gridogin.visibility = View.VISIBLE
-        }
+        val isLoggedIn = token != null && token.isNotEmpty()
+
+        binding.grid.visibility = if (isLoggedIn) View.VISIBLE else View.INVISIBLE
+        binding.gridogin.visibility = if (isLoggedIn) View.INVISIBLE else View.VISIBLE
+        binding.logoutCard.visibility = if (isLoggedIn) View.VISIBLE else View.GONE
     }
+
 
     private fun observeViewModel() {
         lifecycleScope.launchWhenStarted {
@@ -103,6 +102,11 @@ class SettingsActivity : AppCompatActivity() {
         }
         binding.loadProgressCard.setOnClickListener {
             viewModel.loadStats()
+        }
+        binding.logoutCard.setOnClickListener {
+            AuthTokenStorage.clearToken(this)
+            updateUiBasedOnAuth()
+            Toast.makeText(this, "Вы вышли из аккаунта", Toast.LENGTH_SHORT).show()
         }
         binding.statRestartCard.setOnClickListener {
             val databaseHelper = DataBaseHelper(baseContext)
