@@ -1,4 +1,6 @@
-namespace PddTrainer.Models;
+using PddTrainer.Models;
+
+namespace PddTrainer.Domain.Models;
 
 public class UserStats
 {

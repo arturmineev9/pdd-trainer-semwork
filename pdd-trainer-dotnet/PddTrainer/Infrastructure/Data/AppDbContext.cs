@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PddTrainer.Domain.Models;
 using PddTrainer.Models;
 
 public class AppDbContext : DbContext
