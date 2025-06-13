@@ -38,13 +38,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<ISignRecognitionService, SignRecognitionService>(client =>
 {
-    var baseUrl = builder.Configuration["FlaskApi:BaseUrl"];
-    client.BaseAddress = new Uri(baseUrl!);
+    client.BaseAddress = new Uri("http://192.168.31.76:5000");
 });
 
 
 // DI
-builder.Services.AddScoped<ISignRecognitionService, SignRecognitionService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();

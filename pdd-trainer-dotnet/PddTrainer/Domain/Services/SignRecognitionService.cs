@@ -5,7 +5,7 @@ using PddTrainer.Domain.DTOs;
 
 namespace PddTrainer.Domain.Services;
 
-public class SignRecognitionService(HttpClient httpClient) : ISignRecognitionService
+public class SignRecognitionService(HttpClient httpClient, ILogger<SignRecognitionService> logger) : ISignRecognitionService
 {
     public async Task<SignRecognitionResult> RecognizeSignAsync(IFormFile file)
     {
@@ -19,11 +19,12 @@ public class SignRecognitionService(HttpClient httpClient) : ISignRecognitionSer
         content.Add(fileContent, "file", file.FileName);
 
         var response = await httpClient.PostAsync("/predict", content);
+
         response.EnsureSuccessStatusCode();
 
         var json = await response.Content.ReadAsStringAsync();
         var result = JsonSerializer.Deserialize<SignRecognitionResult>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
+        logger.LogInformation("JSON-ответ: {Json}", json);
         return result!;
     }
 }

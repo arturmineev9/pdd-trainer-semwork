@@ -2799,23 +2799,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\serge\\.nuget\\packages\\": {},
-    "E:\\Program Files\\VSSdk\\NuGetPackages": {}
+    "C:\\Users\\Артур\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Documents\\Git\\pdd-trainer-semwork\\pdd-trainer-dotnet\\PddTrainer.Tests\\PddTrainer.Tests.csproj",
+      "projectUniqueName": "C:\\Documents\\Git\\pdd-trainer-semwork\\pdd-trainer-dotnet\\PddTrainer.Tests\\PddTrainer.Tests.csproj",
       "projectName": "PddTrainer.Tests",
-      "projectPath": "E:\\Documents\\Git\\pdd-trainer-semwork\\pdd-trainer-dotnet\\PddTrainer.Tests\\PddTrainer.Tests.csproj",
-      "packagesPath": "C:\\Users\\serge\\.nuget\\packages\\",
-      "outputPath": "E:\\Documents\\Git\\pdd-trainer-semwork\\pdd-trainer-dotnet\\PddTrainer.Tests\\obj\\",
+      "projectPath": "C:\\Documents\\Git\\pdd-trainer-semwork\\pdd-trainer-dotnet\\PddTrainer.Tests\\PddTrainer.Tests.csproj",
+      "packagesPath": "C:\\Users\\Артур\\.nuget\\packages\\",
+      "outputPath": "C:\\Documents\\Git\\pdd-trainer-semwork\\pdd-trainer-dotnet\\PddTrainer.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "E:\\Program Files\\VSSdk\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\serge\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Артур\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2831,8 +2831,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "E:\\Documents\\Git\\pdd-trainer-semwork\\pdd-trainer-dotnet\\PddTrainer\\PddTrainer.csproj": {
-              "projectPath": "E:\\Documents\\Git\\pdd-trainer-semwork\\pdd-trainer-dotnet\\PddTrainer\\PddTrainer.csproj"
+            "C:\\Documents\\Git\\pdd-trainer-semwork\\pdd-trainer-dotnet\\PddTrainer\\PddTrainer.csproj": {
+              "projectPath": "C:\\Documents\\Git\\pdd-trainer-semwork\\pdd-trainer-dotnet\\PddTrainer\\PddTrainer.csproj"
             }
           }
         }
