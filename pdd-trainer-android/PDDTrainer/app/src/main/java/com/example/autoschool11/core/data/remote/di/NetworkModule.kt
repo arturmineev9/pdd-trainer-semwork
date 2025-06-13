@@ -1,28 +1,26 @@
 package com.example.autoschool11.core.data.remote.di
 
-import android.content.Context
 import android.net.Uri
-import com.example.autoschool11.core.data.remote.api.SignRecognitionApi
 import com.example.autoschool11.core.data.remote.adapters.UriTypeAdapter
+import com.example.autoschool11.core.data.remote.api.AuthApi
+import com.example.autoschool11.core.data.remote.api.SignRecognitionApi
+import com.example.autoschool11.core.data.remote.api.UserStatsApi
+import com.example.autoschool11.core.data.repositories.AuthRepositoryImpl
+import com.example.autoschool11.core.domain.repositories.AuthRepository
+import com.example.autoschool11.core.domain.repositories.TokenRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-import com.example.autoschool11.core.data.remote.api.AuthApi
-import com.example.autoschool11.core.data.repositories.AuthRepositoryImpl
-import com.example.autoschool11.core.domain.repositories.AuthRepository
-import com.example.autoschool11.core.data.remote.api.UserStatsApi
-import com.example.autoschool11.ui.screens.login_registration.AuthTokenStorage
-import dagger.hilt.android.qualifiers.ApplicationContext
-import okhttp3.Interceptor
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -34,10 +32,10 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(
-        @ApplicationContext context: Context
+        tokenRepository: TokenRepository
     ): OkHttpClient {
         val authInterceptor = Interceptor { chain ->
-            val token = AuthTokenStorage.getToken(context)
+            val token = tokenRepository.getToken()
             val request = chain.request().newBuilder()
             if (token != null) {
                 request.addHeader("Authorization", "Bearer $token")
@@ -82,10 +80,6 @@ object NetworkModule {
     fun provideAuthApi(retrofit: Retrofit): AuthApi =
         retrofit.create(AuthApi::class.java)
 
-    @Provides
-    @Singleton
-    fun provideAuthRepository(api: AuthApi): AuthRepository =
-        AuthRepositoryImpl(api)
 
     @Provides
     @Singleton

@@ -36,11 +36,8 @@ class LoginActivity : AppCompatActivity() {
             viewModel.authState.collectLatest { state ->
                 when (state) {
                     is AuthState.Loading -> {
-                        // показать прогресс
                     }
                     is AuthState.Success -> {
-                        // сохранить токен, перейти на SettingsActivity
-                        AuthTokenStorage.saveToken(this@LoginActivity, state.token)
                         Toast.makeText(this@LoginActivity, "Успешно!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@LoginActivity, SettingsActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK

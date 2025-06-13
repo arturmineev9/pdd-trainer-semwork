@@ -13,9 +13,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.autoschool11.R
 import com.example.autoschool11.core.data.local.DataBaseHelper
+import com.example.autoschool11.core.domain.usecases.ClearTokenUseCase
+import com.example.autoschool11.core.domain.usecases.GetTokenUseCase
 import com.example.autoschool11.databinding.FragmentSettingsBinding
 import com.example.autoschool11.ui.screens.MainActivity
-import com.example.autoschool11.ui.screens.login_registration.AuthTokenStorage
 import com.example.autoschool11.ui.screens.login_registration.LoginActivity
 import com.example.autoschool11.ui.screens.login_registration.RegistrationActivity
 import com.example.autoschool11.ui.theme_changer.Methods
@@ -25,7 +26,7 @@ import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.model.ColorSwatch
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import java.util.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SettingsActivity : AppCompatActivity() {
@@ -33,6 +34,10 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: FragmentSettingsBinding
     private val viewModel: UserStatsViewModel by viewModels()
     private lateinit var methods: Methods
+    @Inject
+    lateinit var getTokenUseCase: GetTokenUseCase
+    @Inject
+    lateinit var clearTokenUseCase: ClearTokenUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,12 +65,16 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun updateUiBasedOnAuth() {
-        val token = AuthTokenStorage.getToken(this)
-        val isLoggedIn = token != null && token.isNotEmpty()
-
-        binding.grid.visibility = if (isLoggedIn) View.VISIBLE else View.INVISIBLE
-        binding.gridogin.visibility = if (isLoggedIn) View.INVISIBLE else View.VISIBLE
-        binding.logoutCard.visibility = if (isLoggedIn) View.VISIBLE else View.GONE
+        val token = getTokenUseCase()
+        if (token != null && token.isNotEmpty()) {
+            binding.grid.visibility = View.VISIBLE
+            binding.gridogin.visibility = View.GONE
+            binding.logoutCard.visibility = View.VISIBLE
+        } else {
+            binding.grid.visibility = View.INVISIBLE
+            binding.gridogin.visibility = View.VISIBLE
+            binding.logoutCard.visibility = View.GONE
+        }
     }
 
 
@@ -104,7 +113,7 @@ class SettingsActivity : AppCompatActivity() {
             viewModel.loadStats()
         }
         binding.logoutCard.setOnClickListener {
-            AuthTokenStorage.clearToken(this)
+            clearTokenUseCase()
             updateUiBasedOnAuth()
             Toast.makeText(this, "Вы вышли из аккаунта", Toast.LENGTH_SHORT).show()
         }
