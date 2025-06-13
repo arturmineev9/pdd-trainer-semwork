@@ -36,6 +36,12 @@ builder.Services.AddAuthorization();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<ISignRecognitionService, SignRecognitionService>(client =>
+{
+    var baseUrl = builder.Configuration["FlaskApi:BaseUrl"];
+    client.BaseAddress = new Uri(baseUrl!);
+});
+
 
 // DI
 builder.Services.AddScoped<ISignRecognitionService, SignRecognitionService>();

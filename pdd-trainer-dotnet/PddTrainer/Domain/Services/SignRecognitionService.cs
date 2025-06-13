@@ -18,7 +18,7 @@ public class SignRecognitionService(HttpClient httpClient) : ISignRecognitionSer
         fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(file.ContentType);
         content.Add(fileContent, "file", file.FileName);
 
-        var response = await httpClient.PostAsync("http://127.0.0.1:5000/predict", content);
+        var response = await httpClient.PostAsync("/predict", content);
         response.EnsureSuccessStatusCode();
 
         var json = await response.Content.ReadAsStringAsync();
