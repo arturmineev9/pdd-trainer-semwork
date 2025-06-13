@@ -38,11 +38,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<ISignRecognitionService, SignRecognitionService>(client =>
 {
-    client.BaseAddress = new Uri("http://192.168.31.76:5000");
+    client.BaseAddress = new Uri("http://10.17.41.157:5000");
 });
 
 
-// DI
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
