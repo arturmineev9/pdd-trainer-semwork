@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("a41e95cf-038e-4509-80cf-64f0df4f8751")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("PddTrainer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+43a083f9579fa0ccac9e6afc3a60d60cca47e9a0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c76cbb04bcfd7dd0247efad9425558acccd32b4")]
 [assembly: System.Reflection.AssemblyProductAttribute("PddTrainer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PddTrainer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

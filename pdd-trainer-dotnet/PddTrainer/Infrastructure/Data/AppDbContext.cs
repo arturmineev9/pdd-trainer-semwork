@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using PddTrainer.Domain.Models;
 using PddTrainer.Models;
 
+namespace PddTrainer.Infrastructure.Data;
+
 public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }

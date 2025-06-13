@@ -1,4 +1,3 @@
-using PddTrainer.Application.Interfaces;
 using PddTrainer.Domain.DTOs;
 
 namespace PddTrainer.Web.Controllers;

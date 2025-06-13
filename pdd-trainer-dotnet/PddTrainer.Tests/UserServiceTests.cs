@@ -5,6 +5,7 @@ using Moq;
 using PddTrainer.Domain.DTOs;
 using PddTrainer.Models;
 using PddTrainer.Domain.Services;
+using PddTrainer.Infrastructure.Data;
 using Xunit;
 
 namespace PddTrainer.Tests;

@@ -6,18 +6,11 @@ using PddTrainer.Models;
 
 namespace PddTrainer.Domain.Services;
 
-public class JwtTokenService : IJwtTokenService
+public class JwtTokenService(IConfiguration configuration) : IJwtTokenService
 {
-    private readonly IConfiguration _configuration;
-
-    public JwtTokenService(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
-
     public string GenerateToken(User user)
     {
-        var jwtSettings = _configuration.GetSection("JwtSettings");
+        var jwtSettings = configuration.GetSection("JwtSettings");
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]!));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
         var expires = DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["ExpiresInMinutes"]!));

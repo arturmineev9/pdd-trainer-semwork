@@ -7,9 +7,9 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface UserStatsApi {
-    @GET("api/userstats")
+    @GET("api/user-stats")
     suspend fun getStats(): List<UserStatsDto>
 
-    @POST("api/userstats")
+    @POST("api/user-stats")
     suspend fun saveStats(@Body request: UpdateUserStatsRequest)
 }

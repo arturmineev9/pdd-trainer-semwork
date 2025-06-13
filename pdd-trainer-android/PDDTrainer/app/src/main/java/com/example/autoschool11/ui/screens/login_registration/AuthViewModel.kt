@@ -17,6 +17,7 @@ sealed class AuthState {
     data class Success(val token: String) : AuthState()
     data class Error(val message: String) : AuthState()
 }
+
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,

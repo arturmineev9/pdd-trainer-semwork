@@ -2,22 +2,20 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using PddTrainer.Application.Interfaces;
 using PddTrainer.Domain.Services;
 using Microsoft.AspNetCore.Identity;
 using PddTrainer.Domain.Abstractions;
+using PddTrainer.Infrastructure.Data;
 using PddTrainer.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// DB
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSnakeCaseNamingConvention();
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-// Auth
 var jwtSection = builder.Configuration.GetSection("JwtSettings");
 var key = Encoding.ASCII.GetBytes(jwtSection["Key"]!);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

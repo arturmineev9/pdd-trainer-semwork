@@ -6,23 +6,16 @@ using PddTrainer.DTOs;
 namespace PddTrainer.Web.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/user-stats")]
 [Authorize]
-public class UserStatsController : ControllerBase
+public class UserStatsController(IUserService userService) : ControllerBase
 {
-    private readonly IUserService _userService;
-
-    public UserStatsController(IUserService userService)
-    {
-        _userService = userService;
-    }
-
     [HttpGet]
     public async Task<IActionResult> GetStats()
     {
         try
         {
-            var stats = await _userService.GetUserStatsAsync(User);
+            var stats = await userService.GetUserStatsAsync(User);
             return Ok(stats);
         }
         catch (Exception ex)
@@ -36,7 +29,7 @@ public class UserStatsController : ControllerBase
     {
         try
         {
-            await _userService.SaveUserStatsAsync(User, request);
+            await userService.SaveUserStatsAsync(User, request);
             return Ok();
         }
         catch (Exception ex)

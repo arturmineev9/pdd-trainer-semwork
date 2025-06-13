@@ -1,6 +1,6 @@
 using PddTrainer.Domain.DTOs;
 
-namespace PddTrainer.Application.Interfaces;
+namespace PddTrainer.Domain.Abstractions;
 
 public interface ISignRecognitionService
 {

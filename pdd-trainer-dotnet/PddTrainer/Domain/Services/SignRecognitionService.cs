@@ -1,6 +1,6 @@
 using System.Net.Http.Headers;
 using System.Text.Json;
-using PddTrainer.Application.Interfaces;
+using PddTrainer.Domain.Abstractions;
 using PddTrainer.Domain.DTOs;
 
 namespace PddTrainer.Domain.Services;

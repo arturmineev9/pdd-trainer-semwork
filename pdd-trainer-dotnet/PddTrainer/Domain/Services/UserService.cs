@@ -5,6 +5,7 @@ using PddTrainer.Domain.Abstractions;
 using PddTrainer.Domain.DTOs;
 using PddTrainer.Domain.Models;
 using PddTrainer.DTOs;
+using PddTrainer.Infrastructure.Data;
 using PddTrainer.Models;
 
 namespace PddTrainer.Domain.Services;
