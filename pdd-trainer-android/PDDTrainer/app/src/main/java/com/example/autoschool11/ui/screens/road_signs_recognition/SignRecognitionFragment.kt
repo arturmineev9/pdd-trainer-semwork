@@ -64,6 +64,14 @@ class SignRecognitionFragment : Fragment() {
                 viewModel.clearRecognizedSign()
             }
         }
+
+        lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.isLoading.collect { isLoading ->
+                    binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+                }
+            }
+        }
     }
 
     private fun openGallery() {

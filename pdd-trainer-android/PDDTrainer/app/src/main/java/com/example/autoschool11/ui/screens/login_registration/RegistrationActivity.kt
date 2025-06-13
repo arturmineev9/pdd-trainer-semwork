@@ -3,6 +3,7 @@ package com.example.autoschool11.ui.screens.login_registration
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -61,9 +62,12 @@ class RegistrationActivity : AppCompatActivity() {
             viewModel.authState.collectLatest { state ->
                 when (state) {
                     is AuthState.Loading -> {
-                        // показать прогресс
+                        binding.progressBar.visibility = View.VISIBLE
+                        binding.buttonRegistration.isEnabled = false
                     }
                     is AuthState.Success -> {
+                        binding.progressBar.visibility = View.GONE
+                        binding.buttonRegistration.isEnabled = true
                         Toast.makeText(this@RegistrationActivity, "Успешно!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@RegistrationActivity, SettingsActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -72,10 +76,15 @@ class RegistrationActivity : AppCompatActivity() {
                         viewModel.resetState()
                     }
                     is AuthState.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                        binding.buttonRegistration.isEnabled = true
                         Toast.makeText(this@RegistrationActivity, state.message, Toast.LENGTH_SHORT).show()
                         viewModel.resetState()
                     }
-                    else -> {}
+                    else -> {
+                        binding.progressBar.visibility = View.GONE
+                        binding.buttonRegistration.isEnabled = true
+                    }
                 }
             }
         }
