@@ -5,7 +5,6 @@ using PddTrainer.Domain.Abstractions;
 using PddTrainer.Domain.DTOs;
 using PddTrainer.Domain.Models;
 using PddTrainer.DTOs;
-using PddTrainer.Infrastructure.Services;
 using PddTrainer.Models;
 
 namespace PddTrainer.Domain.Services;
@@ -13,10 +12,10 @@ namespace PddTrainer.Domain.Services;
 public class UserService : IUserService
 {
     private readonly AppDbContext _dbContext;
-    private readonly JwtTokenService _jwtTokenService;
+    private readonly IJwtTokenService _jwtTokenService;
     private readonly IPasswordHasher<User> _passwordHasher;
 
-    public UserService(AppDbContext dbContext, JwtTokenService jwtTokenService, IPasswordHasher<User> passwordHasher)
+    public UserService(AppDbContext dbContext, IJwtTokenService jwtTokenService, IPasswordHasher<User> passwordHasher)
     {
         _dbContext = dbContext;
         _jwtTokenService = jwtTokenService;

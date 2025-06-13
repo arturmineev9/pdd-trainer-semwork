@@ -4,7 +4,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using PddTrainer.Application.Interfaces;
 using PddTrainer.Domain.Services;
-using PddTrainer.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using PddTrainer.Domain.Abstractions;
 using PddTrainer.Models;
@@ -43,7 +42,7 @@ builder.Services.AddHttpClient();
 // DI
 builder.Services.AddScoped<ISignRecognitionService, SignRecognitionService>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<JwtTokenService>();
+builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddControllers();
 
