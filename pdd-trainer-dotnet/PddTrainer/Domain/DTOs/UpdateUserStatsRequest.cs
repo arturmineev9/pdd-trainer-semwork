@@ -1,6 +1,4 @@
-using PddTrainer.Domain.DTOs;
-
-namespace PddTrainer.DTOs;
+namespace PddTrainer.Domain.DTOs;
 
 public class UpdateUserStatsRequest
 {

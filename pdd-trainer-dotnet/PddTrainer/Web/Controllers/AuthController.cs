@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using PddTrainer.Domain.Abstractions;
 using PddTrainer.Domain.DTOs;
-using PddTrainer.DTOs;
 
 namespace PddTrainer.Web.Controllers;
 

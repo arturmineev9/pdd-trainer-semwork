@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PddTrainer.Domain.Abstractions;
-using PddTrainer.DTOs;
+using PddTrainer.Domain.DTOs;
 
 namespace PddTrainer.Web.Controllers;
 

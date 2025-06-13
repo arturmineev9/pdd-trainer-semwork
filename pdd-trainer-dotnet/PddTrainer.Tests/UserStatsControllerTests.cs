@@ -5,7 +5,6 @@ using PddTrainer.Domain.DTOs;
 using PddTrainer.Web.Controllers;
 using System.Security.Claims;
 using PddTrainer.Domain.Abstractions;
-using PddTrainer.DTOs;
 using Xunit;
 
 namespace PddTrainer.Tests;

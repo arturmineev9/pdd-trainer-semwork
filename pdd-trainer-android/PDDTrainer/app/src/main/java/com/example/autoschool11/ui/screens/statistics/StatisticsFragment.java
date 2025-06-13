@@ -3,13 +3,10 @@ package com.example.autoschool11.ui.screens.statistics;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.autoschool11.ui.animation.ProgressBarAnimation;
 import com.example.autoschool11.ui.screens.MainActivity;
 import com.example.autoschool11.databinding.FragmentStatisticsBinding;
@@ -26,7 +23,6 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
-
 import java.util.ArrayList;
 
 
