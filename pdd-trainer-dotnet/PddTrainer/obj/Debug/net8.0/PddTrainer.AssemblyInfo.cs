@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PddTrainer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7410a8f52155bb968201333d410e11e917c32545")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+43a083f9579fa0ccac9e6afc3a60d60cca47e9a0")]
 [assembly: System.Reflection.AssemblyProductAttribute("PddTrainer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PddTrainer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
