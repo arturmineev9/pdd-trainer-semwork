@@ -2,11 +2,12 @@ package com.example.autoschool11.ui.screens.road_signs_recognition
 
 import android.content.Context
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.autoschool11.core.data.repositories.SignRecognitionRepository
+import com.example.autoschool11.core.data.repositories.SignRecognitionRepositoryImpl
 import com.example.autoschool11.core.domain.models.RoadSignModel
+import com.example.autoschool11.core.domain.usecases.GetSignInfoUseCase
+import com.example.autoschool11.core.domain.usecases.RecognizeRoadSignUseCase
 import com.example.autoschool11.core.utils.toFile
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignRecognitionViewModel @Inject constructor(
-    private val repository: SignRecognitionRepository
+    private val getSignInfoUseCase: GetSignInfoUseCase,
+    private val recognizeRoadSignUseCase: RecognizeRoadSignUseCase
 ) : ViewModel() {
 
     private val _selectedImageUri = MutableStateFlow<Uri?>(null)
@@ -52,12 +54,12 @@ class SignRecognitionViewModel @Inject constructor(
 
                 if (imageFile == null) throw Exception("Изображение не выбрано")
 
-                val recognitionResult = repository.recognize(imageFile)
+                val recognitionResult = recognizeRoadSignUseCase(imageFile)
 
                 recognitionResult.fold(
                     onSuccess = { response ->
 
-                        val signModel = repository.getSignInfo(response.classId)
+                        val signModel = getSignInfoUseCase(response.classId)
                         _recognizedSign.value = signModel
                     },
                     onFailure = { throwable ->

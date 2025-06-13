@@ -2,8 +2,10 @@ package com.example.autoschool11.core.data.di
 
 import com.example.autoschool11.core.data.repositories.TokenRepositoryImpl
 import com.example.autoschool11.core.data.repositories.AuthRepositoryImpl
+import com.example.autoschool11.core.data.repositories.SignRecognitionRepositoryImpl
 import com.example.autoschool11.core.data.repositories.UserStatsRepositoryImpl
 import com.example.autoschool11.core.domain.repositories.AuthRepository
+import com.example.autoschool11.core.domain.repositories.SignRecognitionRepository
 import com.example.autoschool11.core.domain.repositories.TokenRepository
 import com.example.autoschool11.core.domain.repositories.UserStatsRepository
 import dagger.Binds
@@ -26,4 +28,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindTokenRepository(impl: TokenRepositoryImpl): TokenRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindSignRecognitionRepository(impl: SignRecognitionRepositoryImpl) : SignRecognitionRepository
 } 

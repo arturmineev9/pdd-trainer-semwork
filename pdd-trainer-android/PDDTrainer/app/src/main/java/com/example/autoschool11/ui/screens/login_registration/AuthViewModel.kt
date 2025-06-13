@@ -29,28 +29,35 @@ class AuthViewModel @Inject constructor(
     fun login(email: String, password: String) {
         _authState.value = AuthState.Loading
         viewModelScope.launch {
-            try {
-                val token = loginUseCase(email, password)
-                saveTokenUseCase(token)
-                _authState.value = AuthState.Success(token)
-            } catch (e: Exception) {
-                _authState.value = AuthState.Error(e.message ?: "Ошибка авторизации")
-            }
+            val result = loginUseCase(email, password)
+            result.fold(
+                onSuccess = { token ->
+                    saveTokenUseCase(token)
+                    _authState.value = AuthState.Success(token)
+                },
+                onFailure = { error ->
+                    _authState.value = AuthState.Error(error.message ?: "Ошибка авторизации")
+                }
+            )
         }
     }
 
     fun register(firstName: String, email: String, password: String) {
         _authState.value = AuthState.Loading
         viewModelScope.launch {
-            try {
-                val token = registerUseCase(firstName, email, password)
-                saveTokenUseCase(token)
-                _authState.value = AuthState.Success(token)
-            } catch (e: Exception) {
-                _authState.value = AuthState.Error(e.message ?: "Ошибка регистрации")
-            }
+            val result = registerUseCase(firstName, email, password)
+            result.fold(
+                onSuccess = { token ->
+                    saveTokenUseCase(token)
+                    _authState.value = AuthState.Success(token)
+                },
+                onFailure = { error ->
+                    _authState.value = AuthState.Error(error.message ?: "Ошибка регистрации")
+                }
+            )
         }
     }
+
 
     fun resetState() {
         _authState.value = AuthState.Idle
