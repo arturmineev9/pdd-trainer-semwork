@@ -26,32 +26,36 @@
         android:fontFamily="@font/font"
         android:text="Название знака" />
 
-    <!-- Прокручиваемое описание -->
+    <!-- Прокручиваемый блок: описание + кнопка -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:maxHeight="300dp">
+        android:maxHeight="400dp">
 
-        <TextView
-            android:id="@+id/textViewDescription"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Описание знака..."
-            android:fontFamily="@font/font1"
-            android:textSize="16sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Описание знака..."
+                android:fontFamily="@font/font1"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/buttonOk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:fontFamily="@font/font"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_exam"
+                android:layout_marginTop="24dp"
+                android:paddingVertical="12dp" />
+        </LinearLayout>
     </ScrollView>
-
-    <!-- Кнопка OK -->
-    <Button
-        android:id="@+id/buttonOk"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="OK"
-        android:fontFamily="@font/font"
-        android:textColor="@color/white"
-        android:background="@drawable/btn_exam"
-        android:layout_marginTop="24dp"
-        android:paddingVertical="12dp"/>
-
 </LinearLayout>

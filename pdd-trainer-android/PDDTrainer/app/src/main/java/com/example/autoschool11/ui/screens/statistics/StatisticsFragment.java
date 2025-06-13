@@ -127,11 +127,11 @@ public class StatisticsFragment extends Fragment {
 
         // ProgressBar по темам
         binding.progressbarsthemes.setMax(28);
-        binding.progressbarsthemes.setProgress(dataBaseHelper.getFullThemesCount());
-        ProgressBarAnimation anim = new ProgressBarAnimation(binding.progressbarsthemes, 0, dataBaseHelper.getFullThemesCount());
+        binding.progressbarsthemes.setProgress(0);
+        ProgressBarAnimation anim = new ProgressBarAnimation(binding.progressbarsthemes, 0, 0);
         anim.setDuration(1000);
         binding.progressbarsthemes.startAnimation(anim);
-        binding.fullThemes.setText(dataBaseHelper.getFullThemesCount() + "/28");
+        binding.fullThemes.setText(0 + "/28");
 
         // ProgressBar по вопросам
         binding.progressbarstat.setMax(800);
