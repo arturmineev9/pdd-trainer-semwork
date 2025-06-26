@@ -25,21 +25,7 @@ PDD Trainer - это полнофункциональное приложение
 - **Kotlin** для современной разработки
 - **Hilt** для dependency injection
 - **Retrofit** для работы с API
-- **Room** (планируется) для локальной базы данных
-
-## 🚀 Технологии
-
-### Backend
-![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=.net&logoColor=white)
-![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![Entity Framework](https://img.shields.io/badge/Entity_Framework-512BD4?style=for-the-badge&logo=.net&logoColor=white)
-
-### Android
-![Kotlin](https://img.shields.io/badge/Kotlin-0095D5?style=for-the-badge&logo=kotlin&logoColor=white)
-![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-![Hilt](https://img.shields.io/badge/Hilt-4285F4?style=for-the-badge&logo=google&logoColor=white)
-![Retrofit](https://img.shields.io/badge/Retrofit-4285F4?style=for-the-badge&logo=google&logoColor=white)
+- **Room** для локальной базы данных
 
 ## 📸 Скриншоты
 
